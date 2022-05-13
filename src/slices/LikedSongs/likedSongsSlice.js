@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 
 const likedSongSlice = createSlice({
   name: "likedSong",
@@ -6,16 +6,14 @@ const likedSongSlice = createSlice({
     content: [],
   },
   reducers: {
-    addLikedSong: (state, action) => {
+    toggleAddRemoveLikedSong: (state, action) => {
       return {
         ...state,
-        content: [...state.content, action.payload],
-      }
-    },
-    removeLikedSong: (state, action) => {
-      return {
-        ...state,
-        content: state.content.filter((song, i) => i !== action.payload), // is it okay? "it's copy pasted"
+        content:
+          // state.content.includes(action.payload) // state.content.findIndex( song => song.id === action.payload.id) !== -1
+          state.content.some((song) => song.id === action.payload.id)
+            ? [state.content.filter((song) => song.id !== action.payload.id)]
+            : [...state.content, action.payload],
       }
     },
   },
@@ -23,4 +21,4 @@ const likedSongSlice = createSlice({
 
 export default likedSongSlice.reducer
 
-export const { addLikedSong, removeLikedSong } = likedSongSlice.actions
+export const { toggleAddRemoveLikedSong } = likedSongSlice.actions

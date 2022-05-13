@@ -1,19 +1,6 @@
 import React from "react"
 import Song from "./Song"
 import { Row } from "react-bootstrap"
-import { addLikedSong, removeLikedSong } from "../slices/LikedSongs/likedSongsSlice"
-import { connect } from "react-redux"
-
-const mapStateToProps = (state) => {
-  return
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToLikedSongsProp: (s) => {
-      dispatch(addLikedSong(s))
-    },
-  }
-}
 
 class Album extends React.Component {
   state = {
@@ -80,13 +67,7 @@ class Album extends React.Component {
             <Row>
               <div className="col-md-10 mb-5" id="trackList">
                 {this.state.songs.map((song) => (
-                  <Song
-                    track={song}
-                    key={song.id}
-                    onClick={() => {
-                      this.props.addToLikedSongsProp(song.id)
-                    }}
-                  /> // is this well written???  without props?
+                  <Song track={song} key={song.id} />
                 ))}
               </div>
             </Row>
@@ -97,7 +78,7 @@ class Album extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Album)
+export default Album
 
 /* onClick={() => {
   // in here we should dispatch the action
