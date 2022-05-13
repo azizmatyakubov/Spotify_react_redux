@@ -84,13 +84,35 @@ ul {
   #sidebar {
     display: none;
   }
+  .bg-container {
+    width: 100%;
+  }
 }
 
 /* BOTTOM PLAYER SECTION*/
 
 .bg-container {
+  width: calc(100%, -230px);
   height: 5.5rem;
   background-color: #282828;
+}
+
+.artist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  
+}
+
+.bg-white {
+  background-color: wheat;
 }
 
 .playerControls .row {
