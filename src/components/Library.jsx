@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
-    likedSongs: state.selectedSong.song,
+    likedSong: state.likedSong.content,
   };
 };
 
-const library = ({ likedSongs }) => {
+const library = ({ likedSong }) => {
   return (
     <div
       className="library-container"
@@ -15,28 +15,23 @@ const library = ({ likedSongs }) => {
         //addSelectedSongProp(track);
       }}
     >
-      <div className="library-song">
-        <span className="card-title trackHover px-3" style={{ color: "white" }}>
-          {likedSongs.title}
-        </span>
-        <small className="duration" style={{ color: "white" }}>
-          {Math.floor(parseInt(likedSongs.duration) / 60)}:
-          {parseInt(likedSongs.duration) % 60 < 10
-            ? "0" + (parseInt(likedSongs.duration) % 60)
-            : parseInt(likedSongs.duration) % 60}
-        </small>
-      </div>
-      <div className="library-song">
-        <span className="card-title trackHover px-3" style={{ color: "white" }}>
-          {likedSongs.title}
-        </span>
-        <small className="duration" style={{ color: "white" }}>
-          {Math.floor(parseInt(likedSongs.duration) / 60)}:
-          {parseInt(likedSongs.duration) % 60 < 10
-            ? "0" + (parseInt(likedSongs.duration) % 60)
-            : parseInt(likedSongs.duration) % 60}
-        </small>
-      </div>
+      {likedSong &&
+        likedSong.map((song) => (
+          <div className="library-song">
+            <span
+              className="card-title trackHover px-3"
+              style={{ color: "white" }}
+            >
+              {song.title}
+            </span>
+            <small className="duration" style={{ color: "white" }}>
+              {Math.floor(parseInt(song.duration) / 60)}:
+              {parseInt(song.duration) % 60 < 10
+                ? "0" + (parseInt(song.duration) % 60)
+                : parseInt(song.duration) % 60}
+            </small>
+          </div>
+        ))}
     </div>
   );
 };

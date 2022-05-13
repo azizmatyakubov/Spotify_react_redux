@@ -8,7 +8,6 @@ const likedSongSlice = createSlice({
   reducers: {
     toggleAddRemoveLikedSong: (state, action) => {
       return {
-        ...state,
         content:
           // state.content.includes(action.payload) // state.content.findIndex( song => song.id === action.payload.id) !== -1
           state.content.some((song) => song.id === action.payload.id)
