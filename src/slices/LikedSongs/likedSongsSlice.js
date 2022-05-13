@@ -1,12 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
-const initialState = {
-  content: [],
-}
-
 const likedSongSlice = createSlice({
   name: "likedSong",
-  initialState,
+  initialState: {
+    content: [],
+  },
   reducers: {
     addLikedSong: (state, action) => {
       return {

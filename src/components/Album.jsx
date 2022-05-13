@@ -9,8 +9,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToLikedSongsProp: (song) => {
-      dispatch(addLikedSong(song))
+    addToLikedSongsProp: (s) => {
+      dispatch(addLikedSong(s))
     },
   }
 }
@@ -80,7 +80,13 @@ class Album extends React.Component {
             <Row>
               <div className="col-md-10 mb-5" id="trackList">
                 {this.state.songs.map((song) => (
-                  <Song track={song} key={song.id} onClick={() => this.addToLikedSongsProp(song.id)} />
+                  <Song
+                    track={song}
+                    key={song.id}
+                    onClick={() => {
+                      this.props.addToLikedSongsProp(song.id)
+                    }}
+                  /> // is this well written???  without props?
                 ))}
               </div>
             </Row>
@@ -91,4 +97,11 @@ class Album extends React.Component {
   }
 }
 
-export default Album
+export default connect(mapStateToProps, mapDispatchToProps)(Album)
+
+/* onClick={() => {
+  // in here we should dispatch the action
+  // to trigger the reducer
+  // that will add a book to the content array
+  this.props.addToCartProp(this.state.book)
+}} */
