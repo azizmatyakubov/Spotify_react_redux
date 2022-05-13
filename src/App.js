@@ -7,6 +7,8 @@ import Home from "./components/Home";
 import { Row } from "react-bootstrap";
 import Artist from "./components/Artist";
 import Album from "./components/Album";
+import Library from "./components/Library";
+
 
 let headers = new Headers({
   "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
@@ -55,6 +57,7 @@ class App extends React.Component {
             />
             <Route path="/artist/:id" component={Artist} />
             <Route path="/album/:id" component={Album} />
+            <Route path="/library/" component={Library} />
           </Row>
         </div>
         <Player />

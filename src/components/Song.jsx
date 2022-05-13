@@ -1,9 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addToSelectedSong } from "../slices/selectedSong/selectedSongSlice";
 
-const Song = ({ track }) => (
-  <div className="py-3 trackHover">
+const mapStateToProp = (state) => {
+  return {};
+};
+
+const mapDispatchToProp = (dispatch) => {
+  return {
+    addSelectedSongProp: (song) => {
+      dispatch(addToSelectedSong(song));
+    },
+  };
+};
+
+const Song = ({ track, addSelectedSongProp }) => (
+  <div
+    className="py-3 trackHover"
+    onClick={() => {
+      addSelectedSongProp(track);
+    }}
+  >
     <span className="card-title trackHover px-3" style={{ color: "white" }}>
-      {track.title}
+      {track.title}1
     </span>
     <small className="duration" style={{ color: "white" }}>
       {Math.floor(parseInt(track.duration) / 60)}:
@@ -14,4 +33,4 @@ const Song = ({ track }) => (
   </div>
 );
 
-export default Song;
+export default connect(mapStateToProp, mapDispatchToProp)(Song);

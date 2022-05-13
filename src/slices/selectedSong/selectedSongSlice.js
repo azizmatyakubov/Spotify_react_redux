@@ -6,11 +6,18 @@ const initialState = {
 }
 
 const selectedSong = createSlice({
-  name: 'artist',
+  name: 'selectedSong',
   initialState,
-  reducers: {}
+  reducers: {
+    addToSelectedSong: (state, action) => {
+      return {
+      ...state,
+      song: action.payload
+      }
+    }
+  }
 });
 
-export const {} = selectedSong.actions
+export const {addToSelectedSong} = selectedSong.actions
 
 export default selectedSong.reducer
