@@ -1,5 +1,6 @@
 import React from "react"
 import { toggleAddRemoveLikedSong } from "../slices/LikedSongs/likedSongsSlice"
+import { addToSelectedSong } from "../slices/selectedSong/selectedSongSlice";
 import { connect } from "react-redux"
 
 const mapStateToProps = (state) => {
@@ -10,13 +11,22 @@ const mapDispatchToProps = (dispatch) => {
     addToLikedSongsProp: (song) => {
       dispatch(toggleAddRemoveLikedSong(song))
     },
+    addSelectedSongProp: (song) => {
+      dispatch(addToSelectedSong(song));
+    },
   }
 }
 
-const Song = ({ track, addToLikedSongsProp }) => (
-  <div className="py-3 trackHover">
-    <i className="ml-1 bi bi-heart" onClick={() => addToLikedSongsProp(track)}></i>
+
+const Song = ({ track, addSelectedSongProp, addToLikedSongsProp }) => (
+  <div
+    className="py-3 trackHover"
+    onClick={() => {
+      addSelectedSongProp(track);
+    }}
+  >
     <span className="card-title trackHover px-3" style={{ color: "white" }}>
+       <i className="ml-1 bi bi-heart" onClick={() => addToLikedSongsProp(track)}></i>
       {track.title}
     </span>
     <small className="duration" style={{ color: "white" }}>
@@ -27,3 +37,4 @@ const Song = ({ track, addToLikedSongsProp }) => (
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(Song)
+

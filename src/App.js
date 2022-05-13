@@ -1,12 +1,13 @@
-import React from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
-import "./App.css"
-import Player from "./components/Player"
-import Sidebar from "./components/Sidebar"
-import Home from "./components/Home"
-import { Row } from "react-bootstrap"
-import Artist from "./components/Artist"
-import Album from "./components/Album"
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./App.css";
+import Player from "./components/Player";
+import Sidebar from "./components/Sidebar";
+import Home from "./components/Home";
+import { Row } from "react-bootstrap";
+import Artist from "./components/Artist";
+import Album from "./components/Album";
+import Library from "./components/Library";
 import LikedSongs from "./components/LikedSongs"
 import "bootstrap-icons/font/bootstrap-icons.css"
 
@@ -49,7 +50,7 @@ class App extends React.Component {
             <Route path="/" exact render={() => <Home searchResults={this.state.searchResults} />} />
             <Route path="/artist/:id" component={Artist} />
             <Route path="/album/:id" component={Album} />
-            <Route path="/likedSongs" component={LikedSongs} />
+            <Route path="/library/" component={Library} />
           </Row>
         </div>
         <Player />
