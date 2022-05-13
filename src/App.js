@@ -8,41 +8,38 @@ import { Row } from "react-bootstrap";
 import Artist from "./components/Artist";
 import Album from "./components/Album";
 import Library from "./components/Library";
-
+import LikedSongs from "./components/LikedSongs"
+import "bootstrap-icons/font/bootstrap-icons.css"
 
 let headers = new Headers({
   "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
   "X-RapidAPI-Key": "222902beabmshb95a65b737cead6p1f3ac9jsn23ced94c0d20",
-});
+})
 
 class App extends React.Component {
   state = {
     searchResults: [],
-  };
+  }
 
   search = async (string) => {
     if (string.length > 2) {
       try {
-        let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-            string,
-          {
-            method: "GET",
-            headers,
-          }
-        );
+        let response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + string, {
+          method: "GET",
+          headers,
+        })
 
-        let result = await response.json();
-        let songs = result.data;
+        let result = await response.json()
+        let songs = result.data
 
         this.setState({
           searchResults: songs,
-        });
+        })
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     }
-  };
+  }
 
   render() {
     return (
@@ -50,11 +47,7 @@ class App extends React.Component {
         <div className="container-fluid">
           <Row>
             <Sidebar search={this.search} />
-            <Route
-              path="/"
-              exact
-              render={() => <Home searchResults={this.state.searchResults} />}
-            />
+            <Route path="/" exact render={() => <Home searchResults={this.state.searchResults} />} />
             <Route path="/artist/:id" component={Artist} />
             <Route path="/album/:id" component={Album} />
             <Route path="/library/" component={Library} />
@@ -62,8 +55,8 @@ class App extends React.Component {
         </div>
         <Player />
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App
