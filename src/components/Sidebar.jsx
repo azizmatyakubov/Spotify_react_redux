@@ -42,7 +42,7 @@ class Sidebar extends React.Component {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="nav-item nav-link">
+                    <Link to="/library" className="nav-item nav-link">
                       <i className="fas fa-book-open fa-lg"></i>&nbsp; Your
                       Library
                     </Link>

@@ -12,8 +12,8 @@ const Player = ({ song }) => (
   <div className=" fixed-bottom bg-container pt-1">
     <Row className="d-flex">
       <div className="col-lg-10 offset-lg-2">
-        <Row>
-          {song && <Row className="artist">{song.title} hello</Row>}
+        <Row className="d-flex">
+          {song && <Row className="artist">{song.title}</Row>}
           <div className="col-6 col-md-4 col-lg-2 offset-3 offset-md-4 offset-lg-5 playerControls mt-1">
             <Row>
               <a href="/">
