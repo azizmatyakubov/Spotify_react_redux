@@ -1,13 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-const mapStateToProps = (state) => {
-  return {
-    likedSong: state.likedSong.content,
-  };
-};
+const Library = () => {
+  const likedSong = useSelector((state) => state.likedSong.content);
 
-const library = ({ likedSong }) => {
   return (
     <div
       className="library-container"
@@ -36,4 +32,4 @@ const library = ({ likedSong }) => {
   );
 };
 
-export default connect(mapStateToProps)(library);
+export default Library;
